@@ -13,11 +13,13 @@ import model.CrosswordController;
 
 public class MainCrossword {
 	private CrosswordController crossword;
+	private TestCases test;
 	private Scanner sc;
 	
 	public MainCrossword(){
 		sc= new Scanner(System.in);
 		crossword = new CrosswordController();
+		test = new TestCases();
 	}
 	
 
@@ -28,7 +30,8 @@ public class MainCrossword {
 		int option=0;
 		
 		do{
-			option= ppal.showMenu();
+			System.out.println(ppal);
+			option = ppal.showMenu();
 			ppal.executeOperation(option);
 			
 		}while (option!=0);
@@ -62,7 +65,8 @@ public class MainCrossword {
 			printCrossword();
 			break;
 		case 2:
-			intGame();
+			this.crossword.initCrossword(test.getSmall());
+			System.out.print("The Crossword has been initialized");
 			break;
 	
 		case 3:

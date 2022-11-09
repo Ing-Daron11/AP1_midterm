@@ -2,11 +2,16 @@ package model;
 
 import java.util.Collections;
 
+
 /**
  * @author avillota
  * @since may 2022
  */
 public class CrosswordController {
+
+	public static final int ROWS = 4;
+	public static final int COLUMS = 4;
+
 	
 	/**
 	 * Matrix of cells representing the crossword puzzle
@@ -19,9 +24,19 @@ public class CrosswordController {
 	 * the initial state of a crossword puzzle
 	 */
 	public void initCrossword(String[][] puzzle) {
-		
-		
+		int counter = 0;
+		for(int i = 0; i < ROWS; i++){
+			for(int j = 0; j< COLUMS; j++){
+				if(puzzle[i][j].equals(" ")){
+					crossword[i][j] = new Cell(CellType.BLACK, null, 0);
+				}else{
+					counter ++;
+					crossword[i][j] = new Cell(CellType.CLOSED, puzzle[i][j], counter);
+				}
+			}
+		}
 	}
+
 	/**
 	 * Method to verify if a crossword puzzle is initialized
 	 * @return boolean, true if it is initialized, else false
